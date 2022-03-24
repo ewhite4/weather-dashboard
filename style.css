@@ -1,0 +1,48 @@
+:root {
+    --primary: #030c06;
+    --secondary: #9caea9;
+    --light-dark: white;
+    --dark: black;
+    --border-radius: .5rem;
+}
+
+body {
+    background-color: teal;
+}
+
+h1 {
+    color: black;
+}
+
+.form-label {
+    display: block;
+}
+ 
+.btn {
+    font-size: medium;
+    text-decoration: none;
+    padding: 6px 8px;
+    width: 20%;
+    display: block;
+    margin: 5px 0;
+    border-radius: var(--border-radius);
+    color: var(--primary);
+    background-color: var(--light-dark);
+    box-shadow: 3px 3px var(--dark);
+}
+
+.card {
+    margin: 0 0 1px 0;
+    border: 2px solid var(--dark);
+    border-radius: var(--border-radius);
+    
+}
+
+.card-header {
+    color: var(--primary);
+    padding: 1%;
+}
+
+.card-body {
+    padding: 2.5%;
+}
