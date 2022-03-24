@@ -7,19 +7,23 @@
 }
 
 body {
-    background-color: teal;
+    background-image: url('https://wallpaperaccess.com/full/1323936.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1 {
-    color: black;
+    color: var(--light-dark);
 }
 
 .form-label {
     display: block;
+    font-size: 25px;
 }
  
 .btn {
     font-size: medium;
+    font-weight: bolder;
     text-decoration: none;
     padding: 6px 8px;
     width: 20%;
@@ -33,16 +37,21 @@ h1 {
 
 .card {
     margin: 0 0 1px 0;
-    border: 2px solid var(--dark);
-    border-radius: var(--border-radius);
-    
+    border: 2px solid var(--light-dark);
+    border-radius: var(--border-radius); 
+}
+
+.form-label {
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .card-header {
-    color: var(--primary);
+    color: var(--light-dark);
     padding: 1%;
 }
 
 .card-body {
-    padding: 2.5%;
+    padding: 1%;
+    color: var(--light-dark);
 }

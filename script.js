@@ -6,27 +6,30 @@ var citySearchTerm = document.querySelector('#city-search-term');
 var formSubmitHandler = function(event) {
     event.preventDefault();
 
-    var cityName = nameInputEl.ariaValueMax.trim();
+    var cityName = nameInputEl.value.trim();
 
     if (cityName) {
         getCityRepos(cityName);
 
-        repoContainerEl.textContent = '';
+        citiesContainerEl.textContent = '';
         nameInputEl.value = '';
     } else {
-        alert('Please enter a City name');
+        alert('Please enter a city name');
     }
 }
 
 var getCityRepos = function(user) {
+
+    // weather api url
     var apiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}' + user + '/city';
+    // make a request to url
     fetch(apiUrl)
         .then(function(response) {
             // if request successful
             if (response.ok) {
                 console.log(response);
                 response.json().then(function(data) {
-                    console.log(data)
+                    console.log(data);
                     displayCities(data, user);
                 });
             } else {
@@ -44,10 +47,13 @@ var displayCities = function(cities, searchTerm) {
         return;
     }
 citySearchTerm.textContent = searchTerm;
+
+    // loop over cities
     for (var i = 0; i < cities.length; i++) {
         var cityName = cities[i].owner.login + '/' + cities[i].name;
 
         var cityEl = document.createElement('div');
+        cityEl.classList = 'list-item flex-row justify-space-between align-center';
 
         var titleEl = document.createElement('span');
         titleEl.textContent = cityName;
@@ -58,6 +64,7 @@ citySearchTerm.textContent = searchTerm;
         statusEl.classList = 'flex-row alight-center';
 
         // check if current City has issues or not
+
         if (cities[i].open_issues_count > 0) {
             statusEl.innerHTML =
             "<i class='fas fa-times status-icon icon-danger'></i>" + cities[i].open_issues_count + ' issue(s)';
@@ -67,7 +74,7 @@ citySearchTerm.textContent = searchTerm;
 
         cityEl.appendChild(statusEl);
 
-        cityContainerEl.appendChild(cityEl);
+        citiesContainerEl.appendChild(cityEl);
     }
 };
 
